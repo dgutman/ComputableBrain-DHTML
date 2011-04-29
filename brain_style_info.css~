@@ -1,0 +1,9 @@
+
+
+
+div.zoom_box {
+  border : 1px solid green;  
+	width: 120px;
+	padding : 10px;
+	margin-bottom : 10px;
+	}

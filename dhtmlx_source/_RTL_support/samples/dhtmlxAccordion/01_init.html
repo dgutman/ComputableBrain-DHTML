@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--conf
+<sample in_favorites="false">
+              <product version="2.0" edition="std"/>
+                     <modifications>
+                            <modified date="080715"/>
+                     </modifications>
+               </sample>
+ -->
+<html>
+<head>
+	<title>RTL</title>
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxAccordion/codebase/skins/dhtmlxaccordion_dhx_skyblue.css">
+	<script src="../../../dhtmlxAccordion/codebase/dhtmlxcommon.js"></script>
+	<script src="../../../dhtmlxAccordion/codebase/dhtmlxaccordion.js"></script>
+	<script src="../../../dhtmlxAccordion/codebase/dhtmlxcontainer.js"></script>
+
+	
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+</head>
+<body onload="doOnLoad();">
+<div id="accordObj" style="position: relative; width: 320px; height: 400px;"></div>
+
+<script>
+	var dhxAccord;
+	function doOnLoad() {
+		dhxAccord = new dhtmlXAccordion("accordObj");
+		dhxAccord.setRTL(true);
+		dhxAccord.setIconsPath("../../../dhtmlXAccordion/samples/common/");
+		dhxAccord.addItem("a1", "Main Page");
+		dhxAccord.addItem("a2", "Site Navigation");
+		dhxAccord.addItem("a3", "Support & Feedback");
+		dhxAccord.addItem("a4", "Comments");
+		dhxAccord.setIcon("a3", "icon2.gif");
+		dhxAccord.setIcon("a4", "icon3.gif");
+		dhxAccord.openItem("a1");
+	}
+</script>
+</body>
+</html>

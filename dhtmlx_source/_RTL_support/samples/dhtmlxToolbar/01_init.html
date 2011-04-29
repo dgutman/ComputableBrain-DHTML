@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--conf
+<sample in_favorites="true">
+              <product version="1.0" edition="std"/>
+                     <modifications>
+                            <modified date="080403"/>
+                     </modifications>
+               </sample>
+ -->
+<html>
+<head>
+	<title>RTL Mode</title>
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxToolbar/codebase/skins/dhtmlxtoolbar_dhx_web.css"></link>
+	<script type="text/javascript" src="../../../dhtmlxToolbar/codebase/dhtmlxcommon.js"></script>
+	<script type="text/javascript" src="../../../dhtmlxToolbar/codebase/dhtmlxtoolbar.js"></script>
+	
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+</head>
+<body onload="doOnLoad();">
+<div style="height: 150px; margin-top: 30px;"><div id="toolbarObj"></div></div>
+
+<script>
+var toolbar;
+function doOnLoad(){
+	toolbar = new dhtmlXToolbarObject("toolbarObj", "dhx_web");
+	toolbar.setIconsPath("../../../dhtmlxToolbar/samples/common/imgs/");
+	toolbar.setRTL(true);
+	toolbar.loadXML("../../../dhtmlxToolbar/samples/common/dhxtoolbar.xml?etc="+new Date().getTime());
+}
+</script>
+</body>
+</html>

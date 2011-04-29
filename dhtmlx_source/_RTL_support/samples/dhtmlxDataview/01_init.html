@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Loading data from xml</title>
+	
+	<script src="../../../dhtmlxDataView/codebase/dhtmlxdataview.js" type="text/javascript"></script>
+	<link rel="STYLESHEET" type="text/css" href="../../../dhtmlxDataView/codebase/dhtmlxdataview.css">  
+	
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+	
+	<style type="text/css" media="screen">
+		body { background-color:#EBEBEB; };
+	</style>
+<body>
+	<div id="data_container" style="border:1px solid #A4BED4; background-color:white;width:596px;height:396px;" ></div>
+	<script>
+		data = new dhtmlXDataView({
+			container:"data_container",
+			type:{
+				template:"{obj.Package} : {obj.Version}<br/>{obj.Maintainer}",
+				height:40
+			}
+		});
+		data.setRTL(true);
+		data.load("../../../dhtmlxDataView/samples/common/data.xml");
+	</script>
+
+</body>
+</html>
+

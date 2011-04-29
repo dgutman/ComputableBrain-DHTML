@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--conf
+<sample>
+              <product version="1.0" edition="std"/>
+                     <modifications>
+                            <modified date="080307"/>
+                     </modifications>
+               </sample>
+ --> 
+<html>
+<head>
+	<title>RTL</title>
+	
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxWindows/codebase/dhtmlxwindows.css">
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_skyblue.css">
+	<script src="../../../dhtmlxWindows/codebase/dhtmlxcommon.js"></script>
+	<script src="../../../dhtmlxWindows/codebase/dhtmlxcontainer.js"></script>
+	<script src="../../../dhtmlxWindows/codebase/dhtmlxwindows.js"></script>
+	
+	
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+	
+</head>
+<body onload="doOnLoad();">
+	<div id="winVP" style="position: relative; height: 500px; border: #cecece 1px solid; margin: 10px;"></div>
+	
+<script>
+	
+	var dhxWins, w1, w2;
+	function doOnLoad() {
+		dhxWins = new dhtmlXWindows();
+		dhxWins.enableAutoViewport(false);
+		dhxWins.attachViewportTo("winVP");
+		dhxWins.setImagePath("../../../dhtmlxWindows/codebase/imgs/");
+		dhxWins.setRTL(true);
+		w1 = dhxWins.createWindow("w1", 20, 30, 320, 240);
+		w2 = dhxWins.createWindow("w2", 50, 70, 320, 240);
+	}
+	
+</script>
+</body>

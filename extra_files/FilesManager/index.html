@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+     <title>AJAX Application</title>
+     <script src="codebase/dhtmlx.js"></script>
+	 <script src="codebase/types/ftypes.js"></script>
+     <link rel="STYLESHEET" type="text/css" href="codebase/dhtmlx.css">
+     <link rel="STYLESHEET" type="text/css" href="codebase/types/ftypes.css">
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0px;
+			background-color: #EBEBEB;
+		}
+	</style>
+	
+    <script>
+        var myLayout, myTree, myGrid, myFolders, myMenu, myToolbar;
+		var gl_view_type = "dlist";
+		var gl_view_bg = "";
+		
+		
+        function doOnLoad(){
+			// initialise layout
+            myLayout = new dhtmlXLayoutObject(document.body, "2U");
+			myLayout.cells("a").setWidth(250);
+			myLayout.cells("a").setText("Folders");
+   		    myLayout.cells("b").hideHeader();
+			// initialise menu
+			myMenu = myLayout.attachMenu();
+			myMenu.setImagePath("../../dhtmlxMenu/codebase/imgs/");
+			myMenu.setIconsPath("icons/");
+			myMenu.loadXML("xml/fileExplorerMenu.xml");
+			// initialise toolbar
+			myToolbar = myLayout.attachToolbar();
+			myToolbar.setIconsPath("icons/")
+			myToolbar.loadXML("xml/fileExplorerToolbar.xml");
+			// initialise tree
+			myTree = myLayout.cells("a").attachTree("0");
+			myTree.setImagePath("codebase/imgs/");
+			myTree.setXMLAutoLoading("xml/directoryTree.php");
+			myTree.loadXML("xml/directoryTree.php");
+			//define event handlers for tree, toolbar and menu 
+			myTree.attachEvent("onSelect",showDirContent)
+			myToolbar.attachEvent("onClick",defineTypeAndLoad);
+			myMenu.attachEvent("onClick",defineTypeAndLoad);
+			myMenu.attachEvent("onRadioClick",function(group, idChecked, idClicked, zoneId){
+				defineTypeAndLoad(idClicked);
+				return true;
+			});
+		}
+		
+		//this function we'll use for toolbar and menu event handlers
+		function defineTypeAndLoad(id){
+			if(id=="levelup"){
+				myTree.selectItem(myTree.getParentId(myTree.getSelectedItemId()),true);
+				return;
+			}
+			//close application
+			if(id=="close"){
+				self.close();
+			}
+			//set global variable value depending on user choice
+			if(id=="view_dlist")
+				gl_view_type="dlist";
+			else if(id=="view_icons")
+				gl_view_type="icons";
+			else if(id=="view_tiles")
+				gl_view_type="tiles";
+			if(id.toString().indexOf("view")==0)
+				showDirContent(myTree.getSelectedItemId());
+			return true;
+		}
+		// this function allows to open the selected file. If the file doesn't have the appropriate format, the user will see the message.
+		function showFileContent(id){
+			//supported formats
+			var allowdExt = ["gif","jpeg","jpg","png","html","shtml","htm","css","xml"];
+			var re = new RegExp("[a-z0-9]+\\.([a-z]{1,5})$")
+			var arr = re.exec(id)
+			if(arr==null)
+				return;
+			if(RegExp.index!=-1){
+				for(var i=0;i<allowdExt.length;i++){
+					if(RegExp.$1==allowdExt[i]){
+						if(!myLayout.dhxWins)myLayout.dhxWins=new dhtmlXWindows()
+							myLayout.dhxWins.createWindow("popup",0,0,800,600);
+							myLayout.dhxWins.window("popup").center();
+							myLayout.dhxWins.window("popup").attachURL("./getFile.php?file="+id)
+						return;
+					}	
+				}
+				alert("There is no action associated with this file type");
+			}
+		}
+		// here we initialise grid which will be used for representation of the selected items
+		function showDList(dir){
+			myGrid = myLayout.cells("b").attachGrid();
+			myGrid.setImagePath("codebase/imgs/");
+			myGrid.setIconsPath("icons/grid/");
+			myGrid.setHeader("&nbsp;,Name,Size,Type,Modified"); 
+			myGrid.setColTypes("img,ro,ro,ro"); 
+			myGrid.setInitWidths("40,250,50,100,*");
+			myGrid.setColAlign("center,left,right,left");
+			myGrid.load("xml/directoryContent.php?dir="+dir);
+			//attach event that allows to open the selected item in the row on double click
+			myGrid.attachEvent("onRowDblClicked",function(id){
+				myTree.selectItem(id,true);
+				showFileContent(id);
+			})
+			myGrid.init();
+			gl_view_bg = "grid";
+		}
+		// here we initialise dataView which will be used to display data items either as icons or as tiles 
+		function showOtherViews(dir){
+			debugger;
+			if(gl_view_bg!="folders"){
+			
+				 //This line 'says' that we will use just <row> tags as items for DataView. 
+				dhtmlx.DataDriver.xml.records="/*/row";
+				myFolders = myLayout.cells("b").attachDataView({
+					type:"ficon"				
+				});
+				//attach event that allows to open the selected item on double click
+				myFolders.attachEvent("onItemDblclick",function(id){
+					myTree.selectItem(id,true);
+					showFileContent(id)
+				})
+			}
+			myFolders.clearAll();
+			myFolders.load("xml/directoryContent.php?dir="+dir);
+			//navigate
+			if(gl_view_type=="icons"){
+				myFolders.define("type","ficon");
+			}
+			else if(gl_view_type=="tiles"){
+				myFolders.define("type","ftiles");
+			}
+			gl_view_bg = "folders";
+		}
+
+		function showDirContent(dir){
+			//navigate
+			myTree.openItem(dir);
+			if(gl_view_type=="dlist"){
+				showDList(dir);
+			}
+			else{
+				showOtherViews(dir);
+			}
+		}
+		dhtmlXDataView.prototype.types.ficon.image=function(obj){
+			return "./icons/icons/"+obj.cell[0];
+	    };
+		dhtmlXDataView.prototype.types.ficon.text=function(obj){
+			return obj.cell[1];
+		};
+		dhtmlXDataView.prototype.types.ftiles.image=function(obj){
+			return "./icons/tiles/"+obj.cell[0];
+		};
+		dhtmlXDataView.prototype.types.ftiles.text=function(obj){
+			return obj.cell[1];
+		};
+		dhtmlXDataView.prototype.types.ftiles.size=function(obj){
+			return parseBytes(obj.cell[2]);
+		};
+		
+		//format bytes
+		function parseBytes(num){
+			if (isNaN(num))
+				return "&nbsp;";
+			if (num > 1000000)
+				num=Math.round(num/100000)/10+" Mb";
+			else if (num > 1000)
+				num=Math.round(num/100)/10+" kb";
+			else if (num==0)
+				num = "";
+			else 
+				num=num+" bytes";
+			return num;
+		}
+    </script>
+
+   </head>
+   <body onload="doOnLoad()" >
+   </body>
+</html>
+
+ 

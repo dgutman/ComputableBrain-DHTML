@@ -1,0 +1,52 @@
+<!--conf
+<sample>
+               <product version="1.4" edition="std"/>
+                       <modifications>
+                               <modified date="070101"/>
+                       </modifications>
+               </sample>
+ --> 
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Initialize object on page</title>
+	<link rel="STYLESHEET" type="text/css" href="../../../dhtmlxGrid/codebase/dhtmlxgrid.css">
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css">
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxcommon.js"></script>
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxgrid.js"></script>		
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxgridcell.js"></script>	
+	
+	
+	<link rel="stylesheet" href="../../codebase/dhtmlx_rtl.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script src="../../codebase/dhtmlx_rtl.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<h1>Initialize object on page</h1>
+	<p>You can place this JavaScript grid anywhere on your web page, attaching the grid 
+	to any object.<br>
+	 Set up grid parameters to determine the look of the grid. 
+	 Specify whether the grid items will be loaded from XML. dhtmlxGrid uses
+	 AJAX for fast and flexible data loading.</p>
+		<div id="gridbox" style="width:350px;height:250px;background-color:white;overflow:hidden"></div>
+<br>
+<script>
+	mygrid = new dhtmlXGridObject('gridbox');
+	mygrid.setImagePath("../../../dhtmlxGrid/codebase/imgs/");
+	mygrid.setHeader("Column A, Column B");
+	mygrid.setInitWidths("100,250")
+	mygrid.setColAlign("right,right")
+	mygrid.setColTypes("ro,ed");
+	mygrid.setColSorting("int,str")
+	mygrid.enableMultiselect(true)
+	mygrid.setRTL(true);
+	
+	mygrid.init();
+	mygrid.setSkin("dhx_skyblue")
+	mygrid.loadXML("../../../dhtmlxGrid/samples/common/grid.xml");
+</script>
+
+</body>
+</html>

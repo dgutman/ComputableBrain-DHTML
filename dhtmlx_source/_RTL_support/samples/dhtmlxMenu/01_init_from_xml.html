@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--conf
+<sample in_favorites="true">
+              <product version="1.0" edition="std"/>
+                     <modifications>
+                            <modified date="080318"/>
+                     </modifications>
+               </sample>
+ --> 
+<html>
+<head>
+	<title>Initialization from XML</title>
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxMenu/codebase/skins/dhtmlxmenu_dhx_web.css">
+	<script  src="../../../dhtmlxMenu/codebase/dhtmlxcommon.js"></script>
+	<script  src="../../../dhtmlxMenu/codebase/dhtmlxmenu.js"></script>
+	
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+</head>
+<body onload="initMenu();">
+<div style="height: 250px;"><div id="menuObj"></div></div>
+
+
+<br>
+
+<script>
+	var menu;
+	function initMenu() {
+		menu = new dhtmlXMenuObject("menuObj", "dhx_web");
+		menu.setIconsPath("../../../dhtmlxMenu/samples/common/imgs/");
+		menu.setRTL(true);
+		menu.loadXML("../../../dhtmlxMenu/samples/common/dhxmenu.xml?etc="+new Date().getTime());
+	}
+</script>
+
+</body>

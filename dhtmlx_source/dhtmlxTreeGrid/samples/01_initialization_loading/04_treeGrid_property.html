@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>TreeGrid property</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="title" content="Samples" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<link rel="icon" href="../common/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="../common/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" href="../common/css/style.css" type="text/css" media="screen" />
+
+	</head>
+	<body onload="init()">
+        <div class="header">
+            <a class="logo" href="http://www.dhtmlx.com" title="DHTMLX homepage"></a>
+            <div class="tittle-dhtmlx">DHTMLX Docs & Samples Explorer</div>
+            <div class="search-field">
+                <form action="http://docs.dhtmlx.com/doku.php" accept-charset="utf-8" id="dw__search"><div class="no"><input type="hidden" name="do" value="search" /><input type="text" id="qsearch__in" accesskey="f" name="id" title="Search" /><button type="submit">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>
+            </div>
+            <div class="buttons">
+                <a class="doc_inact" href="../../../docsExplorer/index.html" title="DHTMLX Documentation homepage"></a>
+                <a class="sample"></a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="navigation-div">
+                <a href="../../../docsExplorer/samples.html" class="navigation"><img src="../common/icons/file.gif" alt="" >All components</a>
+                <div class="arrow"></div>
+                <a href="../index.html" class="navigation"><img height="22" src="../common/icons/treegrid.gif" alt="" >dhtmlxTreeGrid</a>
+                <div class="arrow"></div>
+                <a href="./index.html" class="navigation"><img src="../common/icons/none.gif" alt="" >Initialization and loading</a>
+            </div>
+            <div style="display:block;">
+                <h3>TreeGrid property</h3>
+            </div>
+            <div class="navigation-div">
+                <a href="#code" class="navigation view-source"><img src="../common/icons/source.gif" alt="" >View page source</a>
+            </div>
+            <link rel="STYLESHEET" type="text/css" href="../../../dhtmlxGrid/codebase/dhtmlxgrid.css">
+<link rel="stylesheet" type="text/css" href="../../../dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css">
+		<link rel="STYLESHEET" type="text/css" href="../../codebase/ext/dhtmlxtreegrid_property.css">
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxcommon.js"></script>
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
+	<script  src="../../../dhtmlxGrid/codebase/dhtmlxgridcell.js"></script>
+	<script  src="../../codebase/dhtmlxtreegrid.js"></script>
+	<script  src="../../codebase/ext/dhtmlxtreegrid_property.js"></script>
+
+
+
+<script type="text/javascript" charset="utf-8">
+	function render_test(){
+		var data=mygrid.getProperties();
+		var html="<div style='cursor:"+data.Cursor+";border-width:"+data.BorderSize+"px; border-color:"+data.BorderColor+"; border-style:"+data.BorderStyle+";'><h2>"+data.Name+"</h2><textarea>"+data.Description+"</textarea><div>";
+		document.getElementById('test_here').innerHTML=html;
+	}
+	function init(){
+		mygrid = new dhtmlXPropertyGrid('grid_here');
+		mygrid.setImagePath('../../../dhtmlxGrid/codebase/imgs/');
+		mygrid.init();
+		
+		mygrid.loadXML("../common/property.xml",function(){
+			mygrid.attachEvent("onPropertyChanged",function(){
+				render_test();
+			})
+			render_test();
+			
+			mygrid.enableAutoHeight(true);
+			mygrid.setSizes();
+		});
+	}				
+	function set1(){
+		mygrid.setProperties({
+			Name:"border",
+			BorderSize:4,
+			BorderStyle:"dashed",
+			BorderColor:"red"
+		});
+	}
+	function set2(){	
+		mygrid.setProperties({
+			Name:"border-less",
+			BorderSize:0,
+			Description:"some text"
+		});
+	}
+</script>
+
+	
+	<div id="grid_here" style="height:400px; width:250px; ">
+		
+	</div>
+	<div id="test_here">
+		
+	</div>
+	<div id="set_here">
+		<input type="button" name="some_name" value="set 1" onclick="set1()">
+		<input type="button" name="some_name" value="set 2" onclick="set2()">
+	</div>
+			
+			
+         </div>
+    <div class="source">
+        <div class="teg">Source</div>
+        <div class="code" id="code">
+		<div class="hl-main"><pre><span class="hl-code">&lt;</span><span class="hl-identifier">link</span><span class="hl-code"> </span><span class="hl-identifier">rel</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">STYLESHEET</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/css</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../../dhtmlxGrid/codebase/dhtmlxgrid.css</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">link</span><span class="hl-code"> </span><span class="hl-identifier">rel</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">stylesheet</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/css</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../../dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">link</span><span class="hl-code"> </span><span class="hl-identifier">rel</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">STYLESHEET</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/css</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">href</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../codebase/ext/dhtmlxtreegrid_property.css</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code">  </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../../dhtmlxGrid/codebase/dhtmlxcommon.js</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code">  </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../../dhtmlxGrid/codebase/dhtmlxgrid.js</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code">  </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../../dhtmlxGrid/codebase/dhtmlxgridcell.js</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code">  </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../codebase/dhtmlxtreegrid.js</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code">  </span><span class="hl-identifier">src</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">../../codebase/ext/dhtmlxtreegrid_property.js</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+ 
+&lt;</span><span class="hl-identifier">script</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">text/javascript</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">charset</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">utf-8</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">render_test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">data</span><span class="hl-code">=</span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">getProperties</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-reserved">var</span><span class="hl-code"> </span><span class="hl-identifier">html</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">&lt;div style='cursor:</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">Cursor</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">;border-width:</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">BorderSize</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">px; border-color:</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">BorderColor</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">; border-style:</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">BorderStyle</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">;'&gt;&lt;h2&gt;</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">Name</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">&lt;/h2&gt;&lt;textarea&gt;</span><span class="hl-quotes">&quot;</span><span class="hl-code">+</span><span class="hl-identifier">data</span><span class="hl-code">.</span><span class="hl-identifier">Description</span><span class="hl-code">+</span><span class="hl-quotes">&quot;</span><span class="hl-string">&lt;/textarea&gt;&lt;div&gt;</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
+    </span><span class="hl-builtin">document</span><span class="hl-code">.</span><span class="hl-identifier">getElementById</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">test_here</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">.</span><span class="hl-identifier">innerHTML</span><span class="hl-code">=</span><span class="hl-identifier">html</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">init</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">dhtmlXPropertyGrid</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">grid_here</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">setImagePath</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">../../../dhtmlxGrid/codebase/imgs/</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">init</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">loadXML</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">../common/property.xml</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">attachEvent</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">onPropertyChanged</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-reserved">function</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+            </span><span class="hl-identifier">render_test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">
+        </span><span class="hl-identifier">render_test</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">enableAutoHeight</span><span class="hl-brackets">(</span><span class="hl-reserved">true</span><span class="hl-brackets">)</span><span class="hl-code">;
+        </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">setSizes</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">                
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">set1</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">setProperties</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-identifier">Name</span><span class="hl-code">:</span><span class="hl-quotes">&quot;</span><span class="hl-string">border</span><span class="hl-quotes">&quot;</span><span class="hl-code">,
+        </span><span class="hl-identifier">BorderSize</span><span class="hl-code">:</span><span class="hl-number">4</span><span class="hl-code">,
+        </span><span class="hl-identifier">BorderStyle</span><span class="hl-code">:</span><span class="hl-quotes">&quot;</span><span class="hl-string">dashed</span><span class="hl-quotes">&quot;</span><span class="hl-code">,
+        </span><span class="hl-identifier">BorderColor</span><span class="hl-code">:</span><span class="hl-quotes">&quot;</span><span class="hl-string">red</span><span class="hl-quotes">&quot;</span><span class="hl-code">
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+</span><span class="hl-reserved">function</span><span class="hl-code"> </span><span class="hl-identifier">set2</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">    
+    </span><span class="hl-identifier">mygrid</span><span class="hl-code">.</span><span class="hl-identifier">setProperties</span><span class="hl-brackets">(</span><span class="hl-brackets">{</span><span class="hl-code">
+        </span><span class="hl-identifier">Name</span><span class="hl-code">:</span><span class="hl-quotes">&quot;</span><span class="hl-string">border-less</span><span class="hl-quotes">&quot;</span><span class="hl-code">,
+        </span><span class="hl-identifier">BorderSize</span><span class="hl-code">:</span><span class="hl-number">0</span><span class="hl-code">,
+        </span><span class="hl-identifier">Description</span><span class="hl-code">:</span><span class="hl-quotes">&quot;</span><span class="hl-string">some text</span><span class="hl-quotes">&quot;</span><span class="hl-code">
+    </span><span class="hl-brackets">}</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-brackets">}</span><span class="hl-code">
+&lt;/</span><span class="hl-identifier">script</span><span class="hl-code">&gt;
+ 
+&lt;</span><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">id</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">grid_here</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">style</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">height:400px; width:250px; </span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+&lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">id</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">test_here</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+&lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;
+&lt;</span><span class="hl-identifier">div</span><span class="hl-code"> </span><span class="hl-identifier">id</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">set_here</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">name</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">some_name</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">set 1</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">onclick</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">set1()</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+    &lt;</span><span class="hl-identifier">input</span><span class="hl-code"> </span><span class="hl-identifier">type</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">button</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">name</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">some_name</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">value</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">set 2</span><span class="hl-quotes">&quot;</span><span class="hl-code"> </span><span class="hl-identifier">onclick</span><span class="hl-code">=</span><span class="hl-quotes">&quot;</span><span class="hl-string">set2()</span><span class="hl-quotes">&quot;</span><span class="hl-code">&gt;
+&lt;/</span><span class="hl-identifier">div</span><span class="hl-code">&gt;</span></pre></div>
+        </div>
+    <div class="footer">
+        <div class="footer-logo"></div>
+        <div class="copyright">Copyright &copy; 1998-2009 DHTMLX LTD.<br />All rights reserved.</div>
+    </div>
+	</body>
+</html>

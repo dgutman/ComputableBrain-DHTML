@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--conf
+<sample in_favorites="false">
+              <product version="1.0" edition="std"/>
+                     <modifications>
+                            <modified date="080606"/>
+                     </modifications>
+               </sample>
+ --> 
+<html>
+<head>
+	<title>RTL</title>
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxLayout/codebase/dhtmlxlayout.css">
+	<link rel="stylesheet" type="text/css" href="../../../dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_skyblue.css">
+	<script src="../../../dhtmlxLayout/codebase/dhtmlxcommon.js"></script>
+	<script src="../../../dhtmlxLayout/codebase/dhtmlxcontainer.js"></script>
+	<script src="../../../dhtmlxLayout/codebase/dhtmlxlayout.js"></script>
+
+	<script  src="../../codebase/dhtmlx_rtl.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../codebase/dhtmlx_rtl.css">
+</head>
+<body onload="doOnLoad();">
+	<div id="parentId" style="position: relative; top: 20px; left: 20px; width: 600px; height: 400px; aborder: #B5CDE4 1px solid;"></div>
+	
+<script>
+	var dhxLayout;
+	function doOnLoad() {
+		dhxLayout = new dhtmlXLayoutObject("parentId", "4I");
+		dhxLayout.setRTL(true);
+		dhxLayout.cells("a").setText("Main Page");
+		dhxLayout.cells("b").setText("Site Navigation");
+		dhxLayout.cells("c").setText("Support & Feedback");
+		dhxLayout.cells("d").setText("Comments");
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolbar>
+	<item id="back" type="button" text="Back" img="back.gif" imgDis="back_dis.gif"/>   
+	<item id="fwd" type="button" img="forward.gif" imgDis="fwd_dis.gif"/>   
+	<item id="levelup" type="button" img="levelup.gif" imgDis="lup_dis.gif"/>   
+	<item id="search" type="button" text="Search" img="search.gif" imgDis="search_dis.gif"/>   
+	<item id="folders" type="button" text="Folders" img="folders.gif" imgDis="folders_dis.gif"/>   
+	<item id="view" type="buttonSelect" img="view.gif" imgDis="list_dis.gif">
+		<item id="view_dlist" type="button" text="Details" selected="true" img="list.gif"/>   
+		<item id="view_icons" text="Icons" type="button" img="icons.gif"/>   
+		<item id="view_tiles" text="Tiles" type="button" img="tiles.gif"/>   
+		<item id="view_thumbs" text="Thumbnails" type="button" img="thumbnails.gif"/>   
+	</item>   
+</toolbar>
